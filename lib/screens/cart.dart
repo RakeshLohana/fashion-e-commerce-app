@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:fashion_e_commerce_app/Utils/constants.dart';
 import 'package:fashion_e_commerce_app/models/base_model.dart';
 import 'package:fashion_e_commerce_app/widget/Reusable_cart_for_row.dart';
-import 'package:fashion_e_commerce_app/widget/main_wrapper.dart';
+import 'package:fashion_e_commerce_app/ZoomDrawer/main_wrapper.dart';
 import 'package:fashion_e_commerce_app/widget/reusable_button.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';

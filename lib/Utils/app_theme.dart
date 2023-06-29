@@ -5,6 +5,7 @@ class AppTheme {
     fontFamily: "AlegreyaSans",
     textTheme:  const TextTheme(
       displayLarge: TextStyle(
+      
         fontSize: 38,
         color: Colors.black,
         fontWeight: FontWeight.w500,

@@ -11,7 +11,6 @@ class ReusableTextForDetails extends StatelessWidget {
 
    String text;
 
-
   @override
   Widget build(BuildContext context) {
      var theme = Theme.of(context).textTheme;

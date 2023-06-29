@@ -1,15 +1,21 @@
 import 'package:fashion_e_commerce_app/Provider/provider.dart';
 import 'package:fashion_e_commerce_app/Utils/app_theme.dart';
-import 'package:fashion_e_commerce_app/widget/main_wrapper.dart';
+import 'package:fashion_e_commerce_app/screens/checkLogin.dart';
+import 'package:fashion_e_commerce_app/screens/onBoardingScreen.dart';
+import 'package:fashion_e_commerce_app/ZoomDrawer/main_wrapper.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main()=> runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return  MultiProvider(
@@ -23,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: AppTheme.appTheme,
-      home:MainWrapper(),
+      home:CheckLogin().checkLogin ? OnBoardingScreen():MainWrapper()
       // home: const MainWrapper(),
     ) ,
       );

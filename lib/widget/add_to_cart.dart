@@ -11,7 +11,7 @@ class AddToCart {
 
     if (contains == true) {
       const AdvanceSnackBar(
-        textSize: 14.0,
+        textSize: 12.0,
         bgColor: Colors.red,
         message: 'You have added this item to cart before',
         mode: Mode.ADVANCE,
@@ -21,7 +21,7 @@ class AddToCart {
       itemsOnCart.add(data);
 
       const AdvanceSnackBar(
-        textSize: 14.0,
+        textSize: 12.0,
         message: 'Successfully added to your cart',
         mode: Mode.ADVANCE,
         duration: Duration(seconds: 5),

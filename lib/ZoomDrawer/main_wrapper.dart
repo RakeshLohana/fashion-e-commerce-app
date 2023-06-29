@@ -9,6 +9,7 @@ import 'package:fashion_e_commerce_app/screens/home.dart';
 import 'package:fashion_e_commerce_app/screens/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,14 @@ class _MainWrapperState extends State<MainWrapper> {
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.menu),
-          onPressed: () {},
+          onPressed: () {
+             setState(() {
+             ZoomDrawer.of(context)!.toggle();
+
+               
+             });
+
+          },
           color: Colors.black,
         ),
         title: value.isSearchActive? FadeIn(
