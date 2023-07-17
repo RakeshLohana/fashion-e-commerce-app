@@ -38,6 +38,7 @@ class _HomeState extends State<Home> {
 
     return SafeArea(
       child: Scaffold(
+      
         body: SizedBox(
           height: size.height,
           width: size.width,
