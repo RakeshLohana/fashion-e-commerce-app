@@ -4,6 +4,7 @@ import 'package:fashion_e_commerce_app/data/app_data.dart';
 import 'package:fashion_e_commerce_app/models/base_model.dart';
 import 'package:fashion_e_commerce_app/models/categories_model.dart';
 import 'package:fashion_e_commerce_app/screens/details.dart';
+import 'package:fashion_e_commerce_app/screens/search.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -32,13 +33,14 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    
     var size = MediaQuery.of(context).size;
     var theme = Theme.of(context).textTheme;
 
+      // ProviderClass provider = Provider.of<ProviderClass>(context);
+
+
     return SafeArea(
       child: Scaffold(
-      
         body: SizedBox(
           height: size.height,
           width: size.width,
@@ -100,23 +102,37 @@ class _HomeState extends State<Home> {
                           itemCount: categories.length,
                           itemBuilder: (ctx, index) {
                             CategoriesModel current = categories[index];
-                            return Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                    backgroundImage:
-                                        AssetImage(current.imageUrl),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.008,
-                                  ),
-                                  Text(
-                                    current.title,
-                                    style: theme.titleMedium,
-                                  )
-                                ],
+                            return GestureDetector(
+                              onTap: () {
+                              Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailScreen(item:current.imageUrl),
+              ),
+            );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                     
+                                      tag: "item",
+                                      child: CircleAvatar(
+                                        radius: 35,
+                                        backgroundImage:
+                                            AssetImage(current.imageUrl),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: size.height * 0.008,
+                                    ),
+                                    Text(
+                                      current.title,
+                                      style: theme.titleMedium,
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           }),
@@ -138,16 +154,15 @@ class _HomeState extends State<Home> {
                             return GestureDetector(
                                 onTap: () {
                                   Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Details(
-
-                                  data: mainList[index], isCameFromMostPopularPart: false,
-                                  
-                                ),
-                              )
-                              );
-                                }, child: view(index, theme, size));
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Details(
+                                          data: mainList[index],
+                                          isCameFromMostPopularPart: false,
+                                        ),
+                                      ));
+                                },
+                                child: view(index, theme, size));
                           }),
                     ),
                   ),
@@ -161,7 +176,11 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text('Most Popular', style: theme.displaySmall),
-                          Text('see all', style: theme.headlineMedium)
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (_)=>Search()));
+                            },
+                            child: Text('see all', style: theme.headlineMedium))
                         ],
                       ),
                     ),
@@ -183,28 +202,26 @@ class _HomeState extends State<Home> {
                             BaseModel current = mainList[index];
                             return GestureDetector(
                               onTap: () {
-                                 Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Details(
-
-                                  data: mainList[index], isCameFromMostPopularPart: false,
-                                  
-                                ),
-                              )
-                              );
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Details(
+                                        data: mainList[index],
+                                        isCameFromMostPopularPart: false,
+                                      ),
+                                    ));
                               },
                               child: Column(
                                 children: [
                                   Hero(
-
                                     tag: current.imageUrl,
                                     child: Container(
                                       width: size.width * 0.5,
                                       height: size.height * 0.3,
                                       margin: EdgeInsets.all(10),
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(3),
+                                          borderRadius:
+                                              BorderRadius.circular(3),
                                           image: DecorationImage(
                                             image: AssetImage(current.imageUrl),
                                             fit: BoxFit.cover,
@@ -213,17 +230,18 @@ class _HomeState extends State<Home> {
                                             BoxShadow(
                                               offset: Offset(0, 4),
                                               blurRadius: 4,
-                                              color: Color.fromARGB(61, 0, 0, 0),
+                                              color:
+                                                  Color.fromARGB(61, 0, 0, 0),
                                             )
                                           ]),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 2.0),
-                                    child: Text(
-                                      current.name,
-                                      style: theme.displayMedium,)
-                                  ),
+                                      padding: const EdgeInsets.only(top: 2.0),
+                                      child: Text(
+                                        current.name,
+                                        style: theme.displayMedium,
+                                      )),
                                   RichText(
                                     text: TextSpan(
                                         text: "\u{20AC} ",
@@ -236,7 +254,6 @@ class _HomeState extends State<Home> {
                                           TextSpan(
                                               text: current.price.toString(),
                                               style: theme.titleSmall?.copyWith(
-                                                
                                                 fontWeight: FontWeight.bold,
                                               ))
                                         ]),
@@ -299,7 +316,8 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.only(top: 10),
               child: Text(
                 data.name,
-                style: theme.displayMedium?.copyWith(fontWeight: FontWeight.bold),
+                style:
+                    theme.displayMedium?.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             RichText(
@@ -321,5 +339,24 @@ class _HomeState extends State<Home> {
             ),
           ],
         ));
+  }
+}
+class DetailScreen extends StatelessWidget {
+  final String item;
+
+  DetailScreen({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+     
+      body: Center(
+        child: Hero(
+          tag: 'item', // Use the same tag as in the ListView.
+          child: Image.asset(item),
+        ),
+      ),
+    );
   }
 }

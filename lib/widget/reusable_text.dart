@@ -9,7 +9,7 @@ class ReusableTextForDetails extends StatelessWidget {
    
   });
 
-   String text;
+  final  String text;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ReusableTextForDetails extends StatelessWidget {
     return RichText(
       text: TextSpan(
           text: "\u{20AC} ",
-          style: theme.subtitle2?.copyWith(
+          style: theme.titleSmall?.copyWith(
             color: primaryColor,
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -25,7 +25,7 @@ class ReusableTextForDetails extends StatelessWidget {
           children: [
             TextSpan(
                 text: text,
-                style: theme.subtitle2?.copyWith(
+                style: theme.titleSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ))
           ]),

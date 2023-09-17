@@ -22,6 +22,8 @@ class AddToCart {
 
       const AdvanceSnackBar(
         textSize: 12.0,
+        bgColor: Colors.green,
+
         message: 'Successfully added to your cart',
         mode: Mode.ADVANCE,
         duration: Duration(seconds: 5),

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: AppTheme.appTheme,
-      home:CheckLogin().checkLogin ? OnBoardingScreen():MainWrapper()
+      home:CheckLogin().isLogin() ? MainWrapper():OnBoardingScreen      ()
       // home: const MainWrapper(),
     ) ,
       );

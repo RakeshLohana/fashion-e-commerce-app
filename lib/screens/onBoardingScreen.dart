@@ -49,23 +49,36 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    
+    return SafeArea(
+      child: Scaffold(
       
-      body: SafeArea(
-        child: Stack(
-        children: <Widget>[
-           Container(
-            decoration:  BoxDecoration(
-              image: DecorationImage(image: AssetImage(setImage()), fit: BoxFit.cover,),
-            ),
+        
+        body: Stack(
+        children: [
+          PageView.builder(
+              onPageChanged: (index){
+                      setState(() {
+                        _pageIndex=index;
+                      });
+                          
+                    },
+                    itemCount: data.length,
+                    controller: _pageController,
             
-          ),
+            
+            
+            itemBuilder: ((context, index) {
+            return Stack(
+              children: [
+                Image.asset(
+                  setImage(), fit: BoxFit.contain,),
+        
+          
          
          Align(
           alignment: Alignment.bottomCenter,
            child: Container(
-            height: 230,
+            height: 260,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -77,9 +90,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child:Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Padding(
-                 padding: const EdgeInsets.only(top:20.0),
-                 child: Row(
+                 Row(
                   
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -90,25 +101,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                  )),
                   ],
                  ),
-               ),
-                Expanded(
-                 
-                  child: PageView.builder(
-                    onPageChanged: (index){
-                      setState(() {
-                        _pageIndex=index;
-                      });
-                          
-                    },
-                    itemCount: data.length,
-                    controller: _pageController,
-                    itemBuilder:(context,index){
-                      
-                     return ReusableContent(
-                      description: data[index].description,
-                        text: data[index].text);}
-                  ),
-                ),
+                ReusableContent(
+                  description: data[index].description,
+                    text: data[index].text),
               
                SizedBox(height: 2,),
                 
@@ -120,11 +115,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ]),
            ),
          )
+              ],
+            );
+          }))
+          
+        
           
         
         ],
-          ),
-      )
+          )
+      ),
     );
   }
 }
@@ -216,7 +216,7 @@ class ReusableContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom:10.0),
+      padding: const EdgeInsets.only(bottom:15.0,top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

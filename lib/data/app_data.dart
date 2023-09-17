@@ -3,23 +3,6 @@ import 'package:fashion_e_commerce_app/models/base_model.dart';
 import 'package:fashion_e_commerce_app/models/categories_model.dart';
 
 
-//  final FireStorageServices storage = FireStorageServices();
-//   late final Image image1;
-//    late final Image image2;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchImages();
-//   }
-
-//   void fetchImages() async {
-//     image1 = await storage.getImage(context, '1.jpg');
-//     image2 = await storage.getImage(context, 'man2.jpg');
-//     setState(() {}); // Trigger a rebuild after the images are fetched
-//   }
-
-
 List<CategoriesModel> categories = [
   CategoriesModel(imageUrl: 'assets/images/kids.jpg', title: 'Kids'),
   CategoriesModel(imageUrl: 'assets/images/men.jpg', title: 'Men'),

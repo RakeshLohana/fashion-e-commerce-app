@@ -17,22 +17,11 @@ class _ExploreState extends State<Explore> {
   Widget build(BuildContext context)  {
     return  Consumer<ProviderClass>(
       builder: (context,value,child){
-
         return Scaffold(
-          body: Column(
-            children: [
-              
-              Container(
-                child:value.image3 ,
-              ),
-              
-              Container(
-                child: value.image2,
-              )
-           
-            
-            
-          ]),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            // child: CardList(),
+          )
         );
       }
 

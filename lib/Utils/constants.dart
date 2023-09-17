@@ -1,5 +1,25 @@
 import 'package:flutter/material.dart';
 
+
+class AppColor{
+  
+
+Color profileIcon=Color.fromARGB(255, 250, 149, 41);
+Color profileIconShade= Color.fromARGB(255, 246, 244, 242);
+Color editTabColorShade= Colors.orangeAccent.shade200;
+Color editTabColor=Colors.black;
+List<Color> drawerColor = const [
+  Colors.white,
+  Colors.white,
+  Color.fromARGB(176, 255, 255, 255),
+  Color.fromARGB(92, 255, 255, 255),
+  Color.fromARGB(0, 255, 255, 255),
+];
+
+}
+
+
+
 const Color primaryColor = Color(0xfff9985f);
 
 List<String> sizes = ["S", "M", "L", "XL", "XLL"];

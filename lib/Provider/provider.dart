@@ -8,6 +8,10 @@ import 'package:provider/provider.dart';
 
 class ProviderClass extends ChangeNotifier{
 
+
+   int selectedIndexNew = 0;
+
+
  bool _isSearchActive = false;
 
 bool get isSearchActive =>_isSearchActive;
@@ -102,6 +106,31 @@ int get selectedIndex => _selectedIndex;
     _image3 = await storage.getImage(context, 'man2.jpg');
     notifyListeners();
   }
+
+
+    void setTab(i){
+    selectedIndexNew=i;
+    notifyListeners();
+  }
+
+
+
+
+  
+   int navIndex = 0;
+
+
+
+
+ void navIndexFunc(index){
+   navIndex=index;
+  notifyListeners();
+
+
+
 }
+}
+
+
 
 

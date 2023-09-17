@@ -1,6 +1,7 @@
 
 import 'package:fashion_e_commerce_app/Utils/constants.dart';
 import 'package:fashion_e_commerce_app/Utils/flutterToast.dart';
+import 'package:fashion_e_commerce_app/ZoomDrawer/main_wrapper.dart';
 import 'package:fashion_e_commerce_app/screens/signInPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -130,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white)),
                       label: Text(
-                        "Username",
+                        "Email",
                       ),
                       labelStyle: TextStyle(color: Colors.white, fontSize: 20),
                     ),
@@ -217,10 +218,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           email: emailcontroller.text.toString(),
                            password: passwordController.text.toString()).then(
                             (value) {
-                              Utils().snackBar('Account Created Successfully ',Colors.green,context);
+                         Navigator.push(context, MaterialPageRoute(builder: ((context) => MainWrapper())));
                               setState(() {
                           loading=false;
                         });
+
     
                             }
                             ).onError((error, stackTrace) {

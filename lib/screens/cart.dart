@@ -5,7 +5,6 @@ import 'package:fashion_e_commerce_app/widget/Reusable_cart_for_row.dart';
 import 'package:fashion_e_commerce_app/ZoomDrawer/main_wrapper.dart';
 import 'package:fashion_e_commerce_app/widget/reusable_button.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
 
 import '../data/app_data.dart';
 
@@ -22,14 +21,16 @@ class _CartState extends State<Cart> {
   /// Calculate the Total Price
   double calculateTotalPrice() {
     double total = 0.0;
+    double totalNew = 0.0;
     if (itemsOnCart.isEmpty) {
       total = 0;
     } else {
       for (BaseModel data in itemsOnCart) {
-        total = total + data.price * data.value;
+        total = total +( data.price * data.value);
+         totalNew=total+calculateShipping().round();
       }
     }
-    return total;
+    return totalNew;
   }
 
   /// Calculate Shipping
@@ -48,14 +49,14 @@ class _CartState extends State<Cart> {
   }
 
   /// Calculate the Sub Total Price
-  int calculateSubTotalPrice() {
-    int subTotal = 0;
+  double calculateSubTotalPrice() {
+    double subTotal = 0;
     if (itemsOnCart.isEmpty) {
       subTotal = 0;
     } else {
       for (BaseModel data in itemsOnCart) {
-        subTotal = subTotal + data.price.round();
-        subTotal = subTotal - 160;
+        subTotal = subTotal + ( data.price * data.value);
+        // subTotal = subTotal - 160;
       }
     }
     return subTotal < 0 ? 0 : subTotal;
@@ -78,34 +79,6 @@ class _CartState extends State<Cart> {
     var textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      centerTitle: true,
-      title: const Text(
-        "My Cart",
-        style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
-      ),
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: const Icon(
-          Icons.arrow_back_rounded,
-          color: Colors.black,
-        ),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            LineIcons.user,
-            color: Colors.black,
-          ),
-        ),
-      ],
-    ),
       body: SizedBox(
         width: size.width,
         height: size.height,
@@ -126,7 +99,8 @@ class _CartState extends State<Cart> {
                           delay: const Duration(milliseconds: 200),
                           child: const Image(
                             image: AssetImage("assets/images/empty.jpg"),
-                            fit: BoxFit.cover,
+                            height: 180,
+                            // fit: BoxFit.cover,
                           ),
                         ),
                         SizedBox(
@@ -170,7 +144,7 @@ class _CartState extends State<Cart> {
                           child: Container(
                             margin: const EdgeInsets.all(5.0),
                             width: size.width,
-                            height: size.height * 0.25,
+                            height: size.height * 0.23,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +159,7 @@ class _CartState extends State<Cart> {
                                         color: Color.fromARGB(61, 0, 0, 0),
                                       )
                                     ],
-                                    color: Colors.pink,
+                                    // color: Colors.pink,
                                     image: DecorationImage(
                                         image: AssetImage(current.imageUrl),
                                         fit: BoxFit.cover),
@@ -246,7 +220,7 @@ class _CartState extends State<Cart> {
                                         height: size.height * 0.0,
                                       ),
                                       Text(
-                                        "Size = ${sizes[3]}",
+                                        "Size = ${sizes[2]}",
                                         style: textTheme.subtitle2?.copyWith(
                                           fontSize: 15,
                                           color: Colors.grey,
@@ -347,7 +321,8 @@ class _CartState extends State<Cart> {
 
             /// Bottom Card
             Positioned(
-              bottom: 0,
+              // top:300,
+              bottom: -10,
               child: Container(
                 width: size.width,
                 height: size.height * 0.4,
@@ -380,7 +355,7 @@ class _CartState extends State<Cart> {
                       FadeInUp(
                         delay: const Duration(milliseconds: 400),
                         child: ReusableRowForCart(
-                          price: calculateSubTotalPrice().toDouble(),
+                          price: calculateSubTotalPrice(),
                           text: 'Sub Total',
                         ),
                       ),

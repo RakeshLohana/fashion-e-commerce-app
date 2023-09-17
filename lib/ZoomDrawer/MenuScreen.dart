@@ -4,7 +4,6 @@ import 'package:fashion_e_commerce_app/screens/signInPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
