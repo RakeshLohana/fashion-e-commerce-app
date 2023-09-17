@@ -1,7 +1,7 @@
 
 import 'package:fashion_e_commerce_app/Utils/constants.dart';
 import 'package:fashion_e_commerce_app/Utils/flutterToast.dart';
-import 'package:fashion_e_commerce_app/ZoomDrawer/HomePage.dart';
+import 'package:fashion_e_commerce_app/screens/main_wrapper.dart';
 import 'package:fashion_e_commerce_app/screens/SignUpScreem.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -230,7 +230,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             email: emailcontroller.text.toString(),
                              password: passwordController.text.toString()).then(
                               (value) {
-                               Navigator.push(context,MaterialPageRoute(builder: (context)=>HomePage()));
+                               Navigator.push(context,MaterialPageRoute(builder: (context)=>MainWrapper()));
       
                                 Utils().snackBar('Sign In Successfully ',Colors.green.shade700,context);
                                 setState(() {

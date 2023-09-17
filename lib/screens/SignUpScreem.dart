@@ -1,7 +1,7 @@
 
 import 'package:fashion_e_commerce_app/Utils/constants.dart';
 import 'package:fashion_e_commerce_app/Utils/flutterToast.dart';
-import 'package:fashion_e_commerce_app/ZoomDrawer/main_wrapper.dart';
+import 'package:fashion_e_commerce_app/screens/main_wrapper.dart';
 import 'package:fashion_e_commerce_app/screens/signInPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:fashion_e_commerce_app/Utils/constants.dart';
+import 'package:fashion_e_commerce_app/Utils/flutterToast.dart';
 import 'package:fashion_e_commerce_app/models/base_model.dart';
 import 'package:fashion_e_commerce_app/widget/Reusable_cart_for_row.dart';
-import 'package:fashion_e_commerce_app/ZoomDrawer/main_wrapper.dart';
+import 'package:fashion_e_commerce_app/screens/main_wrapper.dart';
 import 'package:fashion_e_commerce_app/widget/reusable_button.dart';
 import 'package:flutter/material.dart';
 
@@ -384,10 +385,13 @@ class _CartState extends State<Cart> {
                           child: ReuseableButton(
                               text: "Checkout",
                               onTap: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Cart()));
+                                if(itemsOnCart.isNotEmpty)
+                                   Utils().snackBar('Order Placed Successfully ',Colors.orange.shade600,context);
+
+                                // Navigator.pushReplacement(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => const Cart()));
                               }),
                         ),
                       )

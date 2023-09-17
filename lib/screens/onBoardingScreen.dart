@@ -108,7 +108,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                SizedBox(height: 2,),
                 
               ReusableButton(pageController: _pageController, text:_pageIndex==2?"Let's get Started ": 'Next', colorText:Colors.white, colorBackground:primaryColor, onTap:(){
-                     _pageIndex==2?Navigator.push(context, MaterialPageRoute(builder: (context)=>SignInScreen())):_pageController.nextPage(duration: Duration(microseconds: 1), curve: Curves.ease);
+                     _pageIndex==2?Navigator.push(context, MaterialPageRoute(builder: (context)=>SignInScreen())):_pageController.nextPage(duration: Duration(microseconds:100 ), curve: Curves.ease);
               } )
                 
                 
